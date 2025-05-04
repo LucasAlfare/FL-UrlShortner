@@ -4,6 +4,7 @@ services:
     build: .
     # variables values obtained from local/private .env file
     environment:
+      URL_PREFIX: ${URL_PREFIX}
       DB_JDBC_URL: ${DB_JDBC_URL}
       DB_JDBC_DRIVER: ${DB_JDBC_DRIVER}
       DB_USERNAME: ${DB_USERNAME}
