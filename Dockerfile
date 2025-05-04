@@ -8,7 +8,7 @@ RUN gradle clean
 # also daemons are not needed because gradle will be discarded
 RUN gradle assemble --no-daemon
 
-FROM openjdk:21-alpine as jdk_stage
+FROM eclipse-temurin:21-alpine as jdk_stage
 EXPOSE 80
 RUN mkdir /app
 COPY --from=gradle_stage /app/backend /app
