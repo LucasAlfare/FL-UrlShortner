@@ -11,5 +11,5 @@ RUN gradle assemble --no-daemon
 FROM eclipse-temurin:21-alpine as jdk_stage
 EXPOSE 80
 RUN mkdir /app
-COPY --from=gradle_stage /app/backend /app
+COPY --from=gradle_stage /app /app
 ENTRYPOINT ["java", "-jar", "/app/build/libs/FL-UrlShortner-1.0.jar"]
