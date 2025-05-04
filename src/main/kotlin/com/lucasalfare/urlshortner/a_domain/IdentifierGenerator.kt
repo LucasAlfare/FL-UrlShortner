@@ -10,6 +10,6 @@ object IdentifierGenerator {
   ): String {
     val r = if (seed == -1) Random else Random(seed)
     val availableCharacters = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-    return (0..length).map { availableCharacters.random(r) }.joinToString("")
+    return (0..<length).map { availableCharacters.random(r) }.joinToString("")
   }
 }

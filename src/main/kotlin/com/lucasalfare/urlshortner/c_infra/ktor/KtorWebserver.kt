@@ -26,7 +26,6 @@ class KtorWebserver(private val usecase: ShortUrlUsecase) {
           return@get call.respondRedirect(originalUrl.original)
         }
 
-        // curl.exe -X POST -H "Content-Type: application/json" -d '{\"original\":\"http://google.com.br\"}' http://localhost:3000/short
         post("/short") {
           runCatching {
             call.receive<ShortUrlRequestDTO>()
