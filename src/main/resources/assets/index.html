@@ -1,10 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Encurtador!</title>
+    <style>
+        body {
+          background-color: #1e1e2f;
+          color: #e0e0ff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          height: 100vh;
+          margin: 0;
+          font-family: sans-serif;
+          padding-top: 50px;
+        }
+        h1 {
+          margin-bottom: 40px;
+          color: #c792ea;
+        }
+        .form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .input-group {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        label {
+          font-size: 16px;
+          color: #e0e0ff;
+        }
+        input {
+          padding: 10px;
+          width: 300px;
+          font-size: 16px;
+          background-color: #2e2e3e;
+          border: 1px solid #555;
+          color: #fff;
+          border-radius: 4px;
+        }
+        button {
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #c792ea;
+          border: none;
+          color: #1e1e2f;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+        }
+        button:hover {
+          background-color: #b57bd8;
+        }
+        #result {
+          margin-top: 20px;
+          font-size: 18px;
+        }
+        a {
+          color: #82aaff;
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>HELLO!</h1>
+<h1>Encurtador!</h1>
+
+<div class="form">
+    <div class="input-group">
+        <label for="urlInput">URL longa:</label>
+        <input type="text" id="urlInput" placeholder="https://exemplo.com/alguma-url-longa">
+    </div>
+    <button onclick="encurtarUrl()">Encurtar!</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+    function encurtarUrl() {
+      const url = document.getElementById('urlInput').value;
+
+      fetch('http://localhost:3000/short', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ original: url })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return response.text();
+      })
+      .then(shortUrl => {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+      })
+      .catch(error => {
+        document.getElementById('result').textContent = 'Erro: ' + error.message;
+      });
+    }
+</script>
 </body>
 </html>

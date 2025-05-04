@@ -1,4 +1,9 @@
 package com.lucasalfare.urlshortner.a_domain
 
-class ShortUrl {
+data class ShortUrl(
+  val identifier: String,
+  val original: String
+) {
+
+  fun fullShortUrl(prefix: String = Constants.shortUrlPrefix) = "$prefix$identifier"
 }

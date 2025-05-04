@@ -2,7 +2,7 @@ package com.lucasalfare.urlshortner.a_domain
 
 import kotlin.random.Random
 
-object IdentifierGeneretor {
+object IdentifierGenerator {
 
   fun getRandomIdentifier(
     length: Int = Constants.DEFAULT_IDENTIFIER_LENGTH,

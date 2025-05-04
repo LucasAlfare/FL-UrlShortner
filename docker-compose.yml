@@ -1,0 +1,12 @@
+services:
+  fl-urlshortner:
+    container_name: fl-urlshortner-container
+    build: .
+    # variables values obtained from local/private .env file
+    environment:
+      DB_JDBC_URL: ${DB_JDBC_URL}
+      DB_JDBC_DRIVER: ${DB_JDBC_DRIVER}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "80:80"
