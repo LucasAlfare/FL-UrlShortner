@@ -12,7 +12,7 @@ object ExposedDatabase {
       jdbcDriverClassName = System.getenv("DB_JDBC_DRIVER") ?: "org.sqlite.JDBC",
       username = System.getenv("DB_USERNAME") ?: "",
       password = System.getenv("DB_PASSWORD") ?: "",
-      maximumPoolSize = 10
+      maximumPoolSize = 3
     ) {
       try {
         SchemaUtils.create(Urls)
