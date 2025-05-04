@@ -87,7 +87,7 @@
     function encurtarUrl() {
       const url = document.getElementById('urlInput').value;
 
-      fetch('http://localhost:3000/short', {
+      fetch('https://fl-urlshortner.onrender.com/short', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
